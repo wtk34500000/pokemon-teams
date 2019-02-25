@@ -53,8 +53,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         })
         .then(resp=>resp.json())
         .then(pokemon=>{
-        
-            if(trainer.pokemons.length < 6){
+            if(e.target.nextSibling.childElementCount < 6){
                 const li = document.createElement('li')
                 const button = document.createElement('button')
                 button.className = "release"
@@ -70,14 +69,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     const deletePokemon = (e, pokemon) => {
         e.preventDefault();
-        
         fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
             method: "Delete",
             headers:{'Content-Type': 'application/json'}
             
         })
         .then(resp=>e.target.parentElement.remove())
-        
     }
 })
 
